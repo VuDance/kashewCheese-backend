@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace WebAPI
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public abstract class BaseApiController : ControllerBase
     {

@@ -30,10 +30,10 @@ namespace Persistence.JWT
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim("Id", Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.Jti,
-                Guid.NewGuid().ToString())
-            }),
+                    new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti,
+                    Guid.NewGuid().ToString())
+                }),
                 Expires = DateTime.UtcNow.AddMinutes(5),
                 Issuer = issuer,
                 Audience = audience,
