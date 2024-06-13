@@ -48,7 +48,6 @@ namespace Application.Cqrs.Commands.UserCommands
                 {
                     User user = _mapper.Map<User>(request);
                     user.Password= BCrypt.Net.BCrypt.HashPassword(user.Password);
-                    user.RoleId = 1;
                     _context.Users.Add(user);
                     await _context.SaveChangesAsync();
                     UserResponse userResponse = new UserResponse();

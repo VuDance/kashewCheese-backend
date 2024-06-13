@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using Persistence;
 using System.Text;
+using System.Text.Json.Serialization;
+using WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -42,6 +44,11 @@ builder.Services.AddSwaggerGen(setup =>
 });
 builder.Services.AddPersistence(configuration);
 builder.Services.AddAuthentication(configuration);
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
 builder.Services.AddApplication();
 builder.Services.AddAutoMapper(typeof(AutoMapperUser).Assembly);
 builder.Services.AddAuthorization();
@@ -59,6 +66,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<PermissionMiddleware>();
 
 app.MapControllers();
 

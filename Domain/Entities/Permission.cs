@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Role:BaseEntity
+    public class Permission:BaseEntity
     {
         public string Name { get; set; }
 
-        public ICollection<UserRole> UserRoles { get; set; }
         public ICollection<RolePermission> RolePermissions { get; set; }
     }
+
 }

@@ -45,7 +45,7 @@ namespace Application.Cqrs.Queries.UserQueries
                     }
                     else
                     {
-                       string token= _generateJSONWebToken.GenerateJSONWebToken(user);
+                       string token= _generateJSONWebToken.GenerateJSONWebToken(user, "ViewUser");
                         authenticationResponse.token = token;
                         apiResponse.Data = authenticationResponse;
                         apiResponse.Status = 200;

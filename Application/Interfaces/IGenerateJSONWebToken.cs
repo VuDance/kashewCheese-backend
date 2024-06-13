@@ -10,6 +10,6 @@ namespace Application.Interfaces
 {
     public interface IGenerateJSONWebToken
     {
-        string GenerateJSONWebToken(User user);
+        string GenerateJSONWebToken(User user, string permision);
     }
 }
